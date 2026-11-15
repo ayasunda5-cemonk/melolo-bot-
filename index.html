@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MeloloBot Downloader - Asisten Pengunduh Drama Modern</title>
+    <title>MeloloBot PRO VIP — Asisten Pengunduh Drama & Short Movie 4K</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
@@ -24,26 +24,36 @@
                     },
                     colors: {
                         dark: {
-                            950: '#09090b',
-                            900: '#0f1117',
-                            800: '#161922',
-                            700: '#1f2430',
-                            600: '#2e3545'
+                            950: '#07080c',
+                            900: '#0d0f17',
+                            850: '#121520',
+                            800: '#161a26',
+                            700: '#202636',
+                            600: '#2f374d'
                         },
                         brand: {
-                            500: '#8b5cf6', // Violet
+                            500: '#8b5cf6',
                             600: '#7c3aed',
                             400: '#a78bfa'
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706'
                         }
                     },
                     animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'fade-in': 'fadeIn 0.3s ease-out forwards',
+                        'fade-in': 'fadeIn 0.25s ease-out forwards',
+                        'shimmer': 'shimmer 2.5s linear infinite',
                     },
                     keyframes: {
                         fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '0%': { opacity: '0', transform: 'translateY(8px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' },
                         }
                     }
                 }
@@ -51,979 +61,249 @@
         }
     </script>
     <style>
-        /* Custom Scrollbar untuk Chat & Riwayat */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f1117; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #2e3545; 
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #7c3aed; 
-        }
-        
-        /* Efek Glassmorphism halus */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0d0f17; }
+        ::-webkit-scrollbar-thumb { background: #2f374d; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #f59e0b; }
+
         .glass-panel {
-            background: rgba(22, 25, 34, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(22, 26, 38, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* Animasi titik mengetik bot */
-        .typing-dot {
-            animation: typingBounce 1.4s infinite ease-in-out both;
+        .glass-vip {
+            background: linear-gradient(145deg, rgba(22, 26, 38, 0.92), rgba(15, 18, 28, 0.95));
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(251, 191, 36, 0.22);
+            box-shadow: 0 10px 35px -10px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(139, 92, 246, 0.12);
         }
+
+        .vip-gradient-text {
+            background: linear-gradient(90deg, #fbbf24, #f59e0b, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .vip-badge-shimmer {
+            background: linear-gradient(90deg, rgba(245,158,11,0.15) 0%, rgba(251,191,36,0.35) 50%, rgba(245,158,11,0.15) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+        }
+
+        .typing-dot { animation: typingBounce 1.4s infinite ease-in-out both; }
         .typing-dot:nth-child(1) { animation-delay: -0.32s; }
         .typing-dot:nth-child(2) { animation-delay: -0.16s; }
-        
         @keyframes typingBounce {
             0%, 80%, 100% { transform: scale(0); }
             40% { transform: scale(1); }
         }
     </style>
 </head>
-<body class="bg-dark-950 text-gray-100 font-sans min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
+<body class="bg-dark-950 text-gray-100 font-sans min-h-screen flex flex-col selection:bg-amber-500 selection:text-dark-950">
 
-    <!-- Navbar Header -->
-    <header class="sticky top-0 z-40 glass-panel border-b border-gray-800/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <!-- Logo & Nama Bot -->
+    <!-- Navbar Header VIP -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-amber-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
+            <!-- Brand Logo & Lencana VIP -->
             <div class="flex items-center space-x-3">
-                <div class="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 shadow-lg shadow-brand-500/20">
-                    <i data-lucide="bot" class="w-6 h-6 text-white"></i>
+                <div class="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-amber-500 via-brand-600 to-indigo-600 shadow-lg shadow-amber-500/20 p-[1.5px]">
+                    <div class="w-full h-full bg-dark-900 rounded-[10px] flex items-center justify-center">
+                        <i data-lucide="crown" class="w-6 h-6 text-amber-400"></i>
+                    </div>
                     <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 border-2 border-dark-900 rounded-full"></span>
                 </div>
                 <div>
-                    <div class="flex items-center space-x-2">
-                        <h1 class="text-lg font-bold tracking-tight text-white">MeloloBot</h1>
-                        <span class="px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-brand-500/20 text-brand-400 border border-brand-500/30 rounded-full">v2.4 Pro</span>
+                    <div class="flex items-center flex-wrap gap-2">
+                        <h1 class="text-lg font-extrabold tracking-tight text-white">MeloloBot <span class="vip-gradient-text">PRO</span></h1>
+                        <span class="vip-badge-shimmer px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-300 border border-amber-400/40 rounded-full flex items-center gap-1">
+                            <i data-lucide="shield-check" class="w-3 h-3 text-amber-400"></i>
+                            PRO VIP UNLOCKED
+                        </span>
                     </div>
-                    <p class="text-xs text-gray-400 flex items-center gap-1">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span>
-                        Asisten Pengunduh Drama Online
-                    </p>
+                    <div class="flex items-center gap-3 text-[11px] text-gray-400 mt-0.5">
+                        <span class="flex items-center gap-1 text-emerald-400">
+                            <i data-lucide="activity" class="w-3 h-3"></i>
+                            Speed: <strong id="liveSpeedIndicator">52.4 MB/s</strong>
+                        </span>
+                        <span class="hidden sm:inline text-gray-600">|</span>
+                        <span class="hidden sm:flex items-center gap-1">
+                            <i data-lucide="cpu" class="w-3 h-3 text-brand-400"></i>
+                            Multi-Thread 16x
+                        </span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Navigasi & Aksi Cepat -->
+            <!-- Multi-Node Selector & Tombol Aksi -->
             <div class="flex items-center space-x-2 sm:space-x-3">
-                <button onclick="openModal('guideModal')" class="flex items-center gap-1.5 px-3 py-2 text-xs sm:text-sm font-medium text-gray-300 hover:text-white bg-dark-800 hover:bg-dark-700 border border-gray-700/70 rounded-xl transition-all">
-                    <i data-lucide="help-circle" class="w-4 h-4 text-brand-400"></i>
-                    <span class="hidden sm:inline">Cara Penggunaan</span>
+                <!-- Server Multi-Node Dropdown -->
+                <div class="hidden md:flex items-center bg-dark-900/90 border border-gray-700/80 rounded-xl px-2.5 py-1.5 text-xs">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>
+                    <select id="serverNodeSelect" onchange="changeServerNode()" class="bg-transparent text-gray-200 font-medium outline-none cursor-pointer">
+                        <option value="VIP-1 SG (Singapore • 9ms)" class="bg-dark-900">Server VIP-1 SG (9ms)</option>
+                        <option value="VIP-2 ID (Jakarta • 5ms)" class="bg-dark-900">Server VIP-2 ID (5ms)</option>
+                        <option value="VIP-3 HK (Hong Kong • 18ms)" class="bg-dark-900">Server VIP-3 HK (18ms)</option>
+                    </select>
+                </div>
+
+                <button onclick="scrollToQueue()" class="relative flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 rounded-xl transition-all">
+                    <i data-lucide="layers" class="w-4 h-4"></i>
+                    <span class="hidden sm:inline">Antrean</span>
+                    <span id="queueCountBadge" class="px-1.5 py-0.2 text-[11px] font-bold bg-amber-500 text-dark-950 rounded-full">0</span>
                 </button>
-                <button onclick="scrollToHistory()" class="relative flex items-center gap-1.5 px-3 py-2 text-xs sm:text-sm font-medium text-gray-300 hover:text-white bg-dark-800 hover:bg-dark-700 border border-gray-700/70 rounded-xl transition-all">
-                    <i data-lucide="history" class="w-4 h-4 text-indigo-400"></i>
+
+                <button onclick="scrollToHistory()" class="relative flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-gray-300 hover:text-white bg-dark-800 hover:bg-dark-700 border border-gray-700/80 rounded-xl transition-all">
+                    <i data-lucide="history" class="w-4 h-4 text-brand-400"></i>
                     <span class="hidden sm:inline">Riwayat</span>
-                    <span id="historyBadge" class="ml-1 px-1.5 py-0.2 text-[11px] font-bold bg-brand-600 text-white rounded-full">2</span>
+                    <span id="historyBadge" class="px-1.5 py-0.2 text-[11px] font-bold bg-brand-600 text-white rounded-full">3</span>
                 </button>
+
+                <button onclick="openModal('guideModal')" title="Panduan PRO" class="p-2 text-gray-300 hover:text-amber-400 bg-dark-800 hover:bg-dark-700 border border-gray-700/80 rounded-xl transition-all">
+                    <i data-lucide="help-circle" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Bar Pengaturan Lanjutan PRO (Toggles) -->
+        <div class="bg-dark-900/90 border-t border-gray-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-3 text-xs">
+                <div class="flex flex-wrap items-center gap-4 sm:gap-6">
+                    <label class="flex items-center gap-2 cursor-pointer select-none">
+                        <input type="checkbox" id="toggleNoWatermark" checked onchange="notifySettingChange('No Watermark VIP', this.checked)" class="sr-only peer">
+                        <div class="w-8 h-4 bg-dark-700 peer-checked:bg-amber-500 rounded-full relative transition-colors after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:w-3 after:h-3 after:rounded-full after:transition-all peer-checked:after:translate-x-4"></div>
+                        <span class="text-gray-300 font-medium flex items-center gap-1">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i> Tanpa Watermark
+                        </span>
+                    </label>
+
+                    <label class="flex items-center gap-2 cursor-pointer select-none">
+                        <input type="checkbox" id="toggleAutoSub" checked onchange="notifySettingChange('Auto-Subtitle Indo/Eng', this.checked)" class="sr-only peer">
+                        <div class="w-8 h-4 bg-dark-700 peer-checked:bg-brand-600 rounded-full relative transition-colors after:content-[''] after:top-0.5 after:left-0.5 after:bg-white after:w-3 after:h-3 after:rounded-full after:transition-all peer-checked:after:translate-x-4"></div>
+                        <span class="text-gray-300 font-medium flex items-center gap-1">
+                            <i data-lucide="subtitles" class="w-3.5 h-3.5 text-brand-400"></i> Auto-Subtitle (.SRT)
+                        </span>
+                    </label>
+
+                    <label class="flex items-center gap-2 cursor-pointer select-none">
+                        <input type="checkbox" id="toggleHwAccel" checked onchange="notifySettingChange('GPU Hardware Acceleration', this.checked)" class="sr-only peer">
+                        <div class="w-8 h-4 bg-dark-700 peer-checked:bg-emerald-500 rounded-full relative transition-colors after:content-[''] after:top-0.5 after:left-0.5 after:bg-white after:w-3 after:h-3 after:rounded-full after:transition-all peer-checked:after:translate-x-4"></div>
+                        <span class="text-gray-300 font-medium flex items-center gap-1">
+                            <i data-lucide="zap" class="w-3.5 h-3.5 text-emerald-400"></i> Hardware Acceleration
+                        </span>
+                    </label>
+                </div>
+
+                <div class="text-[11px] text-amber-400/90 font-medium hidden lg:flex items-center gap-1.5">
+                    <i data-lucide="lock-open" class="w-3.5 h-3.5"></i>
+                    <span>Akses Penuh Episode VIP & Bitrate 4K Tanpa Batas</span>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Konten Utama -->
-    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-7">
         
-        <!-- Banner Notifikasi Toast (Pengganti alert) -->
+        <!-- Toast Container -->
         <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none"></div>
 
-        <!-- Bagian Input Utama -->
-        <section class="mb-8">
-            <div class="glass-panel rounded-2xl p-5 sm:p-7 shadow-xl relative overflow-hidden">
-                <!-- Dekorasi Cahaya Latar -->
-                <div class="absolute -top-24 -right-24 w-64 h-64 bg-brand-600/10 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
+        <!-- SECTION 1: Input URL Tunggal & Mode Batch Multi-Link -->
+        <section class="glass-vip rounded-2xl p-5 sm:p-7 relative overflow-hidden">
+            <div class="absolute -top-28 -right-28 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-28 -left-28 w-72 h-72 bg-brand-600/15 rounded-full blur-3xl pointer-events-none"></div>
 
-                <div class="max-w-3xl mx-auto text-center mb-6">
-                    <h2 class="text-xl sm:text-2xl font-bold text-white mb-2">Unduh Episode Drama Melolo Favoritmu</h2>
-                    <p class="text-sm text-gray-400">Tempelkan tautan (URL) episode atau serial drama Melolo di bawah ini. Asisten bot akan mengekstrak metadata dan menyediakan tautan unduhan cepat.</p>
+            <!-- Switcher Mode Input -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 max-w-4xl mx-auto mb-5">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
+                        Ekstraktor Drama & Short Movie <span class="vip-gradient-text">4K VIP</span>
+                    </h2>
+                    <p class="text-xs sm:text-sm text-gray-400 mt-0.5">Mendukung pengunduhan episode satuan, Full Season, maupun daftar batch multi-link sekaligus.</p>
                 </div>
 
-                <!-- Form Input URL -->
-                <form id="urlForm" onsubmit="handleUrlSubmit(event)" class="max-w-3xl mx-auto">
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <div class="relative flex-1">
-                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                                <i data-lucide="link-2" class="w-5 h-5 text-gray-400"></i>
-                            </div>
-                            <input 
-                                type="text" 
-                                id="videoUrlInput" 
-                                placeholder="https://melolo.tv/drama/cinta-di-musim-semi-ep-12..." 
-                                class="w-full pl-11 pr-24 py-3.5 bg-dark-900/90 border border-gray-700 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 rounded-xl text-sm text-white placeholder-gray-500 outline-none transition-all"
-                                autocomplete="off"
-                            >
-                            <!-- Tombol Tempel / Contoh -->
-                            <div class="absolute inset-y-0 right-2 flex items-center gap-1">
-                                <button type="button" onclick="pasteSampleUrl()" title="Gunakan Link Contoh" class="px-2.5 py-1.5 text-xs font-medium text-brand-400 hover:text-brand-300 bg-brand-500/10 hover:bg-brand-500/20 rounded-lg transition-colors">
-                                    Contoh Link
-                                </button>
-                                <button type="button" id="clearInputBtn" onclick="clearUrlInput()" class="hidden p-1.5 text-gray-400 hover:text-white rounded-lg">
-                                    <i data-lucide="x" class="w-4 h-4"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <button 
-                            type="submit" 
-                            id="processBtn"
-                            class="px-6 py-3.5 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-semibold text-sm rounded-xl shadow-lg shadow-brand-600/25 flex items-center justify-center gap-2 transition-all active:scale-[0.98] whitespace-nowrap"
-                        >
-                            <i data-lucide="sparkles" class="w-4 h-4"></i>
-                            <span>Proses / Ambil Video</span>
-                        </button>
-                    </div>
-                </form>
-
-                <!-- Pilihan Cepat Contoh Drama -->
-                <div class="max-w-3xl mx-auto mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-gray-400">
-                    <span>Coba cepat:</span>
-                    <button type="button" onclick="loadPresetDrama(0)" class="px-2.5 py-1 rounded-lg bg-dark-800 hover:bg-dark-700 border border-gray-700/60 text-gray-300 transition-colors">
-                        🎬 Takdir Sang Pewaris (Ep. 14)
+                <!-- Tab Mode Single vs Batch -->
+                <div class="inline-flex p-1 bg-dark-900 border border-gray-800 rounded-xl self-start sm:self-center shrink-0">
+                    <button type="button" id="tabSingleBtn" onclick="switchInputMode('single')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-amber-500 to-amber-600 text-dark-950 shadow transition-all flex items-center gap-1.5">
+                        <i data-lucide="link" class="w-3.5 h-3.5"></i>
+                        Single URL
                     </button>
-                    <button type="button" onclick="loadPresetDrama(1)" class="px-2.5 py-1 rounded-lg bg-dark-800 hover:bg-dark-700 border border-gray-700/60 text-gray-300 transition-colors">
-                        🌸 Janji di Bawah Hujan (Ep. 08)
-                    </button>
-                    <button type="button" onclick="loadPresetDrama(2)" class="px-2.5 py-1 rounded-lg bg-dark-800 hover:bg-dark-700 border border-gray-700/60 text-gray-300 transition-colors">
-                        🕵️ Rahasia Istana Malam (Ep. 21)
+                    <button type="button" id="tabBatchBtn" onclick="switchInputMode('batch')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all flex items-center gap-1.5">
+                        <i data-lucide="list-plus" class="w-3.5 h-3.5"></i>
+                        Batch Multi-Link
                     </button>
                 </div>
             </div>
-        </section>
 
-        <!-- Grid 2 Kolom: Simulasi Chat Bot & Hasil Preview/Download -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-10">
-            
-            <!-- Kolom Kiri (5 Kolom): Antarmuka Chat Bot Interaktif -->
-            <div class="lg:col-span-5 flex flex-col glass-panel rounded-2xl overflow-hidden h-[540px] shadow-xl">
-                <!-- Header Chat -->
-                <div class="px-4 py-3.5 bg-dark-800/90 border-b border-gray-800 flex items-center justify-between">
-                    <div class="flex items-center gap-2.5">
-                        <div class="w-8 h-8 rounded-lg bg-brand-500/20 border border-brand-500/30 flex items-center justify-center text-brand-400">
-                            <i data-lucide="message-square-code" class="w-4 h-4"></i>
+            <!-- Form Single URL -->
+            <form id="singleUrlForm" onsubmit="handleSingleSubmit(event)" class="max-w-4xl mx-auto">
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <div class="relative flex-1">
+                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                            <i data-lucide="search" class="w-5 h-5 text-amber-400"></i>
                         </div>
-                        <div>
-                            <h3 class="text-sm font-semibold text-white">Log & Asisten Chat Bot</h3>
-                            <p class="text-[11px] text-gray-400">Ketik perintah atau kirim tautan langsung</p>
-                        </div>
-                    </div>
-                    <button onclick="resetChat()" title="Bersihkan Chat" class="p-1.5 text-gray-400 hover:text-white hover:bg-dark-700 rounded-lg transition-colors">
-                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
-                    </button>
-                </div>
-
-                <!-- Area Pesan Chat -->
-                <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-4 scroll-smooth">
-                    <!-- Pesan Awal dari Bot -->
-                    <div class="flex items-start gap-2.5 animate-fade-in">
-                        <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-brand-600 to-indigo-600 flex items-center justify-center shrink-0 mt-0.5">
-                            <i data-lucide="bot" class="w-4 h-4 text-white"></i>
-                        </div>
-                        <div class="bg-dark-800 border border-gray-700/70 rounded-2xl rounded-tl-none px-3.5 py-2.5 max-w-[85%] text-xs sm:text-sm text-gray-200 leading-relaxed shadow-sm">
-                            <p>Halo! Saya <strong class="text-brand-400">MeloloBot</strong> 🤖.</p>
-                            <p class="mt-1">Silakan tempel link video drama Melolo di kolom atas atau ketik link langsung di chat ini. Saya akan menyiapkan opsi resolusi terbaik untuk Anda!</p>
-                            <span class="block text-[10px] text-gray-500 mt-1.5">Baru saja</span>
+                        <input 
+                            type="text" 
+                            id="videoUrlInput" 
+                            placeholder="Tempel link serial/episode Melolo (cth: https://melolo.tv/drama/pewaris-konglomerat)..." 
+                            class="w-full pl-11 pr-28 py-3.5 bg-dark-900/95 border border-gray-700 focus:border-amber-400 focus:ring-2 focus:ring-amber-500/20 rounded-xl text-sm text-white placeholder-gray-500 outline-none transition-all"
+                            autocomplete="off"
+                        >
+                        <div class="absolute inset-y-0 right-2 flex items-center gap-1">
+                            <button type="button" onclick="pasteSampleUrl()" class="px-2.5 py-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200 bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 rounded-lg transition-colors">
+                                Link VIP
+                            </button>
+                            <button type="button" id="clearInputBtn" onclick="clearUrlInput()" class="hidden p-1.5 text-gray-400 hover:text-white rounded-lg">
+                                <i data-lucide="x" class="w-4 h-4"></i>
+                            </button>
                         </div>
                     </div>
-                </div>
-
-                <!-- Chip Perintah Cepat -->
-                <div class="px-3 py-2 bg-dark-900/60 border-t border-gray-800/80 flex gap-1.5 overflow-x-auto no-scrollbar">
-                    <button onclick="sendQuickChat('Bantuan')" class="px-2.5 py-1 text-[11px] bg-dark-800 hover:bg-dark-700 text-gray-300 border border-gray-700 rounded-full whitespace-nowrap transition-colors">
-                        /bantuan
-                    </button>
-                    <button onclick="sendQuickChat('Status Server')" class="px-2.5 py-1 text-[11px] bg-dark-800 hover:bg-dark-700 text-gray-300 border border-gray-700 rounded-full whitespace-nowrap transition-colors">
-                        /status_server
-                    </button>
-                    <button onclick="sendQuickChat('Format Tersedia')" class="px-2.5 py-1 text-[11px] bg-dark-800 hover:bg-dark-700 text-gray-300 border border-gray-700 rounded-full whitespace-nowrap transition-colors">
-                        /format
-                    </button>
-                </div>
-
-                <!-- Input Chat Bawah -->
-                <form onsubmit="handleChatSubmit(event)" class="p-3 bg-dark-800/90 border-t border-gray-800 flex items-center gap-2">
-                    <input 
-                        type="text" 
-                        id="chatInput" 
-                        placeholder="Ketik pesan atau tempel URL Melolo..." 
-                        class="flex-1 bg-dark-900 border border-gray-700 focus:border-brand-500 rounded-xl px-3.5 py-2 text-xs sm:text-sm text-white placeholder-gray-500 outline-none transition-all"
+                    <button 
+                        type="submit" 
+                        class="px-6 py-3.5 bg-gradient-to-r from-amber-500 via-amber-500 to-brand-600 hover:brightness-110 text-dark-950 font-extrabold text-sm rounded-xl shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2 transition-all active:scale-[0.98] whitespace-nowrap"
                     >
-                    <button type="submit" class="p-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl transition-colors shrink-0">
-                        <i data-lucide="send" class="w-4 h-4"></i>
-                    </button>
-                </form>
-            </div>
-
-            <!-- Kolom Kanan (7 Kolom): Preview Hasil & Opsi Kualitas Unduhan -->
-            <div class="lg:col-span-7 flex flex-col">
-                
-                <!-- State Kosong (Sebelum URL diproses) -->
-                <div id="emptyResultState" class="glass-panel rounded-2xl p-8 h-[540px] flex flex-col items-center justify-center text-center border-dashed border-2 border-gray-800">
-                    <div class="w-16 h-16 rounded-2xl bg-dark-800 border border-gray-700 flex items-center justify-center mb-4 text-gray-400">
-                        <i data-lucide="film" class="w-8 h-8 text-brand-400"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold text-white mb-1">Belum Ada Video Diproses</h3>
-                    <p class="text-sm text-gray-400 max-w-md mb-6">
-                        Masukkan tautan drama Melolo pada kolom input di atas untuk melihat pratinjau episode, informasi durasi, dan pilihan kualitas unduhan.
-                    </p>
-                    <button onclick="loadPresetDrama(0)" class="px-4 py-2.5 bg-dark-800 hover:bg-dark-700 text-brand-400 border border-brand-500/30 rounded-xl text-xs font-medium flex items-center gap-2 transition-all">
-                        <i data-lucide="play-circle" class="w-4 h-4"></i>
-                        Simulasikan Contoh Drama Sekarang
+                        <i data-lucide="wand-2" class="w-4 h-4"></i>
+                        <span>Analisis & Buka Episode</span>
                     </button>
                 </div>
+            </form>
 
-                <!-- State Loading Skeleton -->
-                <div id="loadingResultState" class="hidden glass-panel rounded-2xl p-6 h-[540px] flex flex-col justify-between animate-pulse">
-                    <div class="flex flex-col sm:flex-row gap-5">
-                        <div class="w-full sm:w-40 h-56 bg-dark-700 rounded-xl shrink-0"></div>
-                        <div class="flex-1 space-y-3 py-2">
-                            <div class="h-4 bg-dark-700 rounded w-1/4"></div>
-                            <div class="h-6 bg-dark-700 rounded w-3/4"></div>
-                            <div class="h-4 bg-dark-700 rounded w-1/2"></div>
-                            <div class="space-y-2 pt-3">
-                                <div class="h-3 bg-dark-700 rounded w-full"></div>
-                                <div class="h-3 bg-dark-700 rounded w-5/6"></div>
-                                <div class="h-3 bg-dark-700 rounded w-4/6"></div>
-                            </div>
+            <!-- Form Batch Multi-Link (Tersembunyi secara default) -->
+            <form id="batchUrlForm" onsubmit="handleBatchSubmit(event)" class="hidden max-w-4xl mx-auto animate-fade-in">
+                <div class="relative">
+                    <textarea 
+                        id="batchUrlInput" 
+                        rows="4" 
+                        placeholder="Tempel banyak tautan drama/episode Melolo di sini (satu tautan per baris)...&#10;https://melolo.tv/watch/pewaris-rahasia-ep-01&#10;https://melolo.tv/watch/pewaris-rahasia-ep-02&#10;https://melolo.tv/watch/takdir-ceo-dingin-ep-15"
+                        class="w-full p-4 bg-dark-900/95 border border-gray-700 focus:border-amber-400 focus:ring-2 focus:ring-amber-500/20 rounded-xl text-xs sm:text-sm text-white placeholder-gray-500 outline-none transition-all font-mono"
+                    ></textarea>
+                    <div class="flex flex-wrap items-center justify-between gap-2 mt-3">
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="fillSampleBatch()" class="px-3 py-1.5 text-xs font-medium text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 rounded-lg transition-colors">
+                                + Isi 4 Contoh Link Batch
+                            </button>
+                            <button type="button" onclick="document.getElementById('batchUrlInput').value=''" class="px-3 py-1.5 text-xs font-medium text-gray-400 hover:text-white bg-dark-800 rounded-lg">
+                                Bersihkan
+                            </button>
                         </div>
-                    </div>
-                    <div class="space-y-3 mt-6">
-                        <div class="h-14 bg-dark-700 rounded-xl"></div>
-                        <div class="h-14 bg-dark-700 rounded-xl"></div>
-                        <div class="h-14 bg-dark-700 rounded-xl"></div>
-                    </div>
-                </div>
-
-                <!-- State Hasil Ditemukan -->
-                <div id="activeResultState" class="hidden glass-panel rounded-2xl p-5 sm:p-6 shadow-xl animate-fade-in">
-                    <!-- Info Metadata Drama -->
-                    <div class="flex flex-col sm:flex-row gap-5 pb-5 border-b border-gray-800">
-                        <!-- Poster Drama -->
-                        <div class="relative w-full sm:w-36 h-48 sm:h-52 rounded-xl overflow-hidden bg-dark-800 shrink-0 border border-gray-700/70 group">
-                            <img 
-                                id="dramaPoster" 
-                                src="" 
-                                alt="Poster Drama" 
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                onerror="this.onerror=null; this.src='https://placehold.co/300x420/1f2430/a78bfa?text=Melolo+Drama';"
-                            >
-                            <div class="absolute top-2 left-2 px-2 py-0.5 bg-black/75 backdrop-blur-md rounded-md text-[10px] font-semibold text-white flex items-center gap-1">
-                                <i data-lucide="star" class="w-3 h-3 text-amber-400 fill-amber-400"></i>
-                                <span id="dramaRating">9.4</span>
-                            </div>
-                            <div class="absolute bottom-2 right-2 px-2 py-0.5 bg-brand-600/90 rounded-md text-[10px] font-semibold text-white" id="dramaDuration">
-                                45:18
-                            </div>
-                        </div>
-
-                        <!-- Detail Judul & Deskripsi -->
-                        <div class="flex-1 flex flex-col justify-between">
-                            <div>
-                                <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                                    <span id="dramaCategory" class="px-2.5 py-0.5 text-[11px] font-medium bg-brand-500/15 text-brand-400 border border-brand-500/30 rounded-full">
-                                        Romantis • Drama
-                                    </span>
-                                    <span class="text-xs text-gray-400 flex items-center gap-1">
-                                        <i data-lucide="subtitles" class="w-3.5 h-3.5 text-emerald-400"></i>
-                                        Sub Indo Tersedia
-                                    </span>
-                                </div>
-                                <h3 id="dramaTitle" class="text-lg sm:text-xl font-bold text-white leading-snug mb-2">
-                                    Judul Drama Melolo
-                                </h3>
-                                <p id="dramaDescription" class="text-xs sm:text-sm text-gray-400 leading-relaxed line-clamp-3">
-                                    Deskripsi singkat episode drama akan muncul di sini.
-                                </p>
-                            </div>
-
-                            <div class="mt-4 pt-3 border-t border-gray-800/80 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-400">
-                                <span class="flex items-center gap-1.5">
-                                    <i data-lucide="server" class="w-3.5 h-3.5 text-indigo-400"></i>
-                                    Server: <strong class="text-gray-200">Melolo-CDN-JKT01</strong>
-                                </span>
-                                <span class="flex items-center gap-1.5 text-emerald-400">
-                                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
-                                    Siap Diunduh
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Progress Bar Simulasi Unduhan (Muncul saat mengunduh) -->
-                    <div id="downloadProgressCard" class="hidden my-4 p-4 rounded-xl bg-dark-900/90 border border-brand-500/40 shadow-inner">
-                        <div class="flex items-center justify-between mb-2">
-                            <div class="flex items-center gap-2">
-                                <i data-lucide="loader-2" id="progressSpinner" class="w-4 h-4 text-brand-400 animate-spin"></i>
-                                <span id="progressStatusText" class="text-xs sm:text-sm font-medium text-white">Menyiapkan aliran video...</span>
-                            </div>
-                            <span id="progressPercentText" class="text-xs font-bold text-brand-400">0%</span>
-                        </div>
-                        <div class="w-full bg-dark-700 rounded-full h-2.5 overflow-hidden">
-                            <div id="progressBarFill" class="bg-gradient-to-r from-brand-600 to-indigo-400 h-2.5 rounded-full transition-all duration-200" style="width: 0%"></div>
-                        </div>
-                        <div class="flex justify-between items-center mt-2 text-[11px] text-gray-400">
-                            <span id="progressSpeedText">Kecepatan: 0 MB/s</span>
-                            <span id="progressSizeText">0 MB / 0 MB</span>
-                        </div>
-                    </div>
-
-                    <!-- Daftar Pilihan Kualitas Unduhan -->
-                    <div class="mt-4">
-                        <div class="flex items-center justify-between mb-3">
-                            <h4 class="text-xs font-semibold uppercase tracking-wider text-gray-400">Pilih Kualitas & Format Unduhan</h4>
-                            <span class="text-[11px] text-gray-500">MP4 / MP3 Direct</span>
-                        </div>
-
-                        <div id="qualityOptionsList" class="space-y-2.5">
-                            <!-- Diisi secara dinamis via JavaScript -->
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Bagian Riwayat Unduhan (Download History) -->
-        <section id="historySection" class="glass-panel rounded-2xl p-5 sm:p-6 shadow-xl">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 pb-4 border-b border-gray-800">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-xl bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
-                        <i data-lucide="folder-down" class="w-5 h-5"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-base sm:text-lg font-bold text-white">Riwayat Unduhan</h3>
-                        <p class="text-xs text-gray-400">Daftar video drama yang baru saja Anda proses di sesi ini</p>
-                    </div>
-                </div>
-                <button onclick="clearHistory()" class="self-start sm:self-auto px-3 py-1.5 text-xs font-medium text-rose-400 hover:text-rose-300 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 rounded-xl flex items-center gap-1.5 transition-colors">
-                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-                    Hapus Riwayat
-                </button>
-            </div>
-
-            <!-- Tabel / Kartu Riwayat -->
-            <div id="historyListContainer" class="space-y-3">
-                <!-- Item riwayat di-render oleh JS -->
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="border-t border-gray-800/80 bg-dark-900/50 py-6 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-            <div class="flex items-center gap-2">
-                <i data-lucide="bot" class="w-4 h-4 text-brand-400"></i>
-                <span><strong class="text-gray-300">MeloloBot Downloader</strong> &copy; 2026. Antarmuka Simulasi Asisten Media.</span>
-            </div>
-            <p class="text-center sm:text-right">Gunakan alat ini secara bijak untuk keperluan pribadi dan menghormati hak cipta kreator.</p>
-        </div>
-    </footer>
-
-    <!-- Modal Panduan Cara Penggunaan -->
-    <div id="guideModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fade-in">
-        <div class="bg-dark-800 border border-gray-700 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative">
-            <div class="flex items-center justify-between pb-4 border-b border-gray-700">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center">
-                        <i data-lucide="book-open" class="w-4 h-4"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white">Panduan Penggunaan MeloloBot</h3>
-                </div>
-                <button onclick="closeModal('guideModal')" class="p-1.5 text-gray-400 hover:text-white rounded-lg hover:bg-dark-700">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
-            </div>
-
-            <div class="py-5 space-y-4 text-sm text-gray-300">
-                <div class="flex gap-3.5">
-                    <div class="w-7 h-7 rounded-full bg-brand-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</div>
-                    <div>
-                        <h4 class="font-semibold text-white">Salin Tautan Episode Melolo</h4>
-                        <p class="text-xs text-gray-400 mt-0.5">Buka platform Melolo, pilih judul film atau episode drama yang diinginkan, lalu salin URL dari bilah alamat browser atau tombol Bagikan.</p>
-                    </div>
-                </div>
-                <div class="flex gap-3.5">
-                    <div class="w-7 h-7 rounded-full bg-brand-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</div>
-                    <div>
-                        <h4 class="font-semibold text-white">Tempel & Klik "Proses / Ambil Video"</h4>
-                        <p class="text-xs text-gray-400 mt-0.5">Tempelkan tautan ke kolom input di atas (atau kirim langsung di kolom chat bot), lalu tekan tombol proses. Bot akan menganalisis metadata video.</p>
-                    </div>
-                </div>
-                <div class="flex gap-3.5">
-                    <div class="w-7 h-7 rounded-full bg-brand-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</div>
-                    <div>
-                        <h4 class="font-semibold text-white">Pilih Resolusi & Unduh</h4>
-                        <p class="text-xs text-gray-400 mt-0.5">Pilih kualitas video (1080p Full HD, 720p HD, 480p SD) atau ekstrak audio (MP3). Klik tombol Unduh dan tunggu hingga proses selesai.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pt-4 border-t border-gray-700 flex justify-end">
-                <button onclick="closeModal('guideModal')" class="px-5 py-2.5 bg-brand-600 hover:bg-brand-500 text-white text-xs font-semibold rounded-xl transition-colors">
-                    Mengerti, Mulai Sekarang
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript Aplikasi -->
-    <script>
-        // Inisialisasi ikon Lucide
-        lucide.createIcons();
-
-        // Data Mock Drama Melolo
-        const presetDramas = [
-            {
-                id: 'ML-101',
-                url: 'https://melolo.tv/watch/takdir-sang-pewaris-episode-14',
-                title: 'Takdir Sang Pewaris - Episode 14 (Sub Indo)',
-                category: 'Romantis • Keluarga',
-                rating: '9.6',
-                duration: '46:20',
-                poster: 'https://placehold.co/300x420/1e1b4b/c4b5fd?text=Takdir+Sang+Pewaris%0AEp.+14',
-                description: 'Setelah rahasia keluarga besar terungkap di pesta ulang tahun perusahaan, Arka harus memilih antara mempertahankan tahta bisnis atau memperjuangkan cinta sejatinya bersama Kirana.',
-                qualities: [
-                    { label: '1080p Full HD', badge: 'Terbaik', format: 'MP4', size: '642 MB', sizeNum: 642, icon: 'sparkles' },
-                    { label: '720p HD', badge: 'Populer', format: 'MP4', size: '318 MB', sizeNum: 318, icon: 'video' },
-                    { label: '480p SD', badge: 'Hemat Kuota', format: 'MP4', size: '145 MB', sizeNum: 145, icon: 'smartphone' },
-                    { label: 'Audio OST / Dub', badge: 'Audio Saja', format: 'MP3', size: '42 MB', sizeNum: 42, icon: 'music' }
-                ]
-            },
-            {
-                id: 'ML-102',
-                url: 'https://melolo.tv/watch/janji-di-bawah-hujan-episode-08',
-                title: 'Janji di Bawah Hujan - Episode 08 (Sub Indo)',
-                category: 'Melodrama • Remaja',
-                rating: '9.3',
-                duration: '41:05',
-                poster: 'https://placehold.co/300x420/172554/93c5fd?text=Janji+di+Bawah+Hujan%0AEp.+08',
-                description: 'Pertemuan tak terduga di stasiun kereta lama membawa kembali kenangan masa sekolah yang belum selesai. Akankah hujan malam ini menyatukan dua hati yang sempat terpisah?',
-                qualities: [
-                    { label: '1080p Full HD', badge: 'Terbaik', format: 'MP4', size: '580 MB', sizeNum: 580, icon: 'sparkles' },
-                    { label: '720p HD', badge: 'Populer', format: 'MP4', size: '285 MB', sizeNum: 285, icon: 'video' },
-                    { label: '480p SD', badge: 'Hemat Kuota', format: 'MP4', size: '128 MB', sizeNum: 128, icon: 'smartphone' },
-                    { label: 'Audio OST / Dub', badge: 'Audio Saja', format: 'MP3', size: '38 MB', sizeNum: 38, icon: 'music' }
-                ]
-            },
-            {
-                id: 'ML-103',
-                url: 'https://melolo.tv/watch/rahasia-istana-malam-episode-21',
-                title: 'Rahasia Istana Malam - Episode 21 (Sub Indo)',
-                category: 'Misteri • Sejarah',
-                rating: '9.8',
-                duration: '52:40',
-                poster: 'https://placehold.co/300x420/31102f/f0abfc?text=Rahasia+Istana+Malam%0AEp.+21',
-                description: 'Jenderal Muda menemukan surat segel emas di ruang arsip terlarang. Konspirasi tingkat tinggi di dalam istana mulai terkuak satu per satu menjelang festival bulan purnama.',
-                qualities: [
-                    { label: '1080p Full HD', badge: 'Terbaik', format: 'MP4', size: '790 MB', sizeNum: 790, icon: 'sparkles' },
-                    { label: '720p HD', badge: 'Populer', format: 'MP4', size: '395 MB', sizeNum: 395, icon: 'video' },
-                    { label: '480p SD', badge: 'Hemat Kuota', format: 'MP4', size: '182 MB', sizeNum: 182, icon: 'smartphone' },
-                    { label: 'Audio OST / Dub', badge: 'Audio Saja', format: 'MP3', size: '48 MB', sizeNum: 48, icon: 'music' }
-                ]
-            }
-        ];
-
-        // State Aplikasi
-        let currentDrama = null;
-        let isDownloading = false;
-        let downloadHistory = [
-            {
-                title: 'Takdir Sang Pewaris - Episode 13 (Sub Indo)',
-                quality: '1080p Full HD (MP4)',
-                size: '635 MB',
-                time: 'Hari ini, 05:40 WIB'
-            },
-            {
-                title: 'Langit Senja di Seoul - Episode 04 (Sub Indo)',
-                quality: '720p HD (MP4)',
-                size: '290 MB',
-                time: 'Kemarin, 21:15 WIB'
-            }
-        ];
-
-        // Elemen DOM
-        const urlInput = document.getElementById('videoUrlInput');
-        const clearInputBtn = document.getElementById('clearInputBtn');
-        const chatMessages = document.getElementById('chatMessages');
-        const emptyResultState = document.getElementById('emptyResultState');
-        const loadingResultState = document.getElementById('loadingResultState');
-        const activeResultState = document.getElementById('activeResultState');
-
-        // Event Listener Input URL untuk tombol Clear
-        urlInput.addEventListener('input', () => {
-            if (urlInput.value.trim().length > 0) {
-                clearInputBtn.classList.remove('hidden');
-            } else {
-                clearInputBtn.classList.add('hidden');
-            }
-        });
-
-        function clearUrlInput() {
-            urlInput.value = '';
-            clearInputBtn.classList.add('hidden');
-            urlInput.focus();
-        }
-
-        function pasteSampleUrl() {
-            const randomDrama = presetDramas[Math.floor(Math.random() * presetDramas.length)];
-            urlInput.value = randomDrama.url;
-            clearInputBtn.classList.remove('hidden');
-            showToast('Link contoh berhasil ditempelkan!', 'info');
-        }
-
-        function loadPresetDrama(index) {
-            const drama = presetDramas[index];
-            urlInput.value = drama.url;
-            clearInputBtn.classList.remove('hidden');
-            processUrlRequest(drama.url, drama);
-        }
-
-        // Handle Submit Form Utama
-        function handleUrlSubmit(e) {
-            e.preventDefault();
-            const url = urlInput.value.trim();
-            if (!url) {
-                showToast('Harap masukkan tautan video drama Melolo terlebih dahulu.', 'error');
-                urlInput.focus();
-                return;
-            }
-            processUrlRequest(url);
-        }
-
-        // Proses Simulasi Ekstraksi URL
-        function processUrlRequest(url, predefinedDrama = null) {
-            if (isDownloading) {
-                showToast('Tunggu proses unduhan yang sedang berjalan selesai.', 'warning');
-                return;
-            }
-
-            // Tambahkan pesan user ke chat
-            appendUserMessage(url);
-
-            // Tampilkan indikator bot mengetik & state loading
-            const typingId = appendBotTyping();
-            emptyResultState.classList.add('hidden');
-            activeResultState.classList.add('hidden');
-            loadingResultState.classList.remove('hidden');
-
-            // Tentukan drama hasil (cocokkan dengan preset atau buat dinamis dari URL)
-            let matchedDrama = predefinedDrama;
-            if (!matchedDrama) {
-                matchedDrama = presetDramas.find(d => url.toLowerCase().includes(d.url.split('/').pop().slice(0, 10)));
-            }
-            if (!matchedDrama) {
-                // Ekstrak judul dari slug URL jika user memasukkan link kustom
-                const customTitle = extractTitleFromUrl(url);
-                matchedDrama = {
-                    ...presetDramas[0],
-                    url: url,
-                    title: customTitle,
-                    poster: `https://placehold.co/300x420/1e1b4b/a78bfa?text=${encodeURIComponent(customTitle.slice(0, 22))}`
-                };
-            }
-
-            // Simulasi jeda pemrosesan server bot (1.2 detik)
-            setTimeout(() => {
-                removeBotTyping(typingId);
-                loadingResultState.classList.add('hidden');
-                
-                currentDrama = matchedDrama;
-                renderDramaResult(matchedDrama);
-                
-                appendBotMessage(`Berhasil mengekstrak metadata untuk <strong>${matchedDrama.title}</strong>! Silakan pilih resolusi video (1080p/720p/480p) atau MP3 pada panel pratinjau.`);
-            }, 1200);
-        }
-
-        function extractTitleFromUrl(url) {
-            try {
-                const clean = url.replace(/^https?:\/\//, '').split('?')[0];
-                const parts = clean.split('/').filter(Boolean);
-                const lastPart = parts[parts.length - 1] || 'Episode Drama Melolo';
-                const formatted = lastPart
-                    .replace(/[-_]/g, ' ')
-                    .replace(/\b\w/g, l => l.toUpperCase());
-                return formatted.length > 4 ? `${formatted} (Sub Indo)` : 'Drama Spesial Melolo - Episode Terbaru';
-            } catch {
-                return 'Drama Spesial Melolo - Episode Terbaru';
-            }
-        }
-
-        // Render Hasil Preview Drama & Opsi Kualitas
-        function renderDramaResult(drama) {
-            document.getElementById('dramaPoster').src = drama.poster;
-            document.getElementById('dramaTitle').textContent = drama.title;
-            document.getElementById('dramaCategory').textContent = drama.category;
-            document.getElementById('dramaRating').textContent = drama.rating;
-            document.getElementById('dramaDuration').textContent = drama.duration;
-            document.getElementById('dramaDescription').textContent = drama.description;
-
-            // Sembunyikan progress bar jika ada sisa sebelumnya
-            document.getElementById('downloadProgressCard').classList.add('hidden');
-
-            const listContainer = document.getElementById('qualityOptionsList');
-            listContainer.innerHTML = '';
-
-            drama.qualities.forEach((q, idx) => {
-                const isBest = idx === 0;
-                const itemHtml = `
-                    <div class="flex items-center justify-between p-3 sm:p-3.5 rounded-xl bg-dark-900/80 hover:bg-dark-800 border ${isBest ? 'border-brand-500/40' : 'border-gray-800'} transition-all group">
-                        <div class="flex items-center gap-3">
-                            <div class="w-9 h-9 rounded-lg ${isBest ? 'bg-brand-500/20 text-brand-400' : 'bg-dark-800 text-gray-400'} flex items-center justify-center shrink-0">
-                                <i data-lucide="${q.icon}" class="w-4 h-4"></i>
-                            </div>
-                            <div>
-                                <div class="flex items-center gap-2">
-                                    <span class="text-xs sm:text-sm font-semibold text-white">${q.label}</span>
-                                    <span class="px-2 py-0.5 text-[10px] font-medium rounded-md ${isBest ? 'bg-brand-500/20 text-brand-300' : 'bg-gray-800 text-gray-400'}">
-                                        ${q.badge}
-                                    </span>
-                                </div>
-                                <p class="text-[11px] text-gray-400 mt-0.5">Format: <strong class="text-gray-300">${q.format}</strong> • Ukuran: <strong class="text-gray-300">${q.size}</strong></p>
-                            </div>
-                        </div>
-                        <button 
-                            onclick="startDownloadSimulation(${idx})" 
-                            class="px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all active:scale-95 ${isBest ? 'bg-brand-600 hover:bg-brand-500 text-white shadow-md shadow-brand-600/20' : 'bg-dark-700 hover:bg-brand-600 text-gray-200 hover:text-white'}"
-                        >
-                            <i data-lucide="download" class="w-3.5 h-3.5"></i>
-                            <span>Unduh</span>
+                        <button type="submit" class="px-6 py-2.5 bg-gradient-to-r from-amber-500 to-brand-600 hover:brightness-110 text-dark-950 font-extrabold text-xs sm:text-sm rounded-xl shadow-lg flex items-center gap-2 transition-all">
+                            <i data-lucide="layers" class="w-4 h-4"></i>
+                            <span>Proses Semua Link ke Antrean</span>
                         </button>
                     </div>
-                `;
-                listContainer.insertAdjacentHTML('beforeend', itemHtml);
-            });
-
-            activeResultState.classList.remove('hidden');
-            lucide.createIcons();
-        }
-
-        // Simulasi Progress Bar Unduhan Realistis + Unduh File Sampel
-        function startDownloadSimulation(qualityIndex) {
-            if (!currentDrama) return;
-            if (isDownloading) {
-                showToast('Proses unduhan sedang berlangsung, harap tunggu...', 'warning');
-                return;
-            }
-
-            isDownloading = true;
-            const quality = currentDrama.qualities[qualityIndex];
-            const progressCard = document.getElementById('downloadProgressCard');
-            const progressFill = document.getElementById('progressBarFill');
-            const progressPercent = document.getElementById('progressPercentText');
-            const progressStatus = document.getElementById('progressStatusText');
-            const progressSpeed = document.getElementById('progressSpeedText');
-            const progressSize = document.getElementById('progressSizeText');
-            const progressSpinner = document.getElementById('progressSpinner');
-
-            progressCard.classList.remove('hidden');
-            progressFill.style.width = '0%';
-            progressPercent.textContent = '0%';
-            progressStatus.textContent = `Mengunduh ${quality.label} (${quality.format})...`;
-            progressSpinner.classList.add('animate-spin');
-
-            appendBotMessage(`Memulai unduhan <strong>${currentDrama.title}</strong> dalam kualitas <strong>${quality.label}</strong> (${quality.size})...`);
-
-            let progress = 0;
-            const totalSize = quality.sizeNum;
-
-            const interval = setInterval(() => {
-                // Penambahan progress acak agar terasa realistis
-                const increment = Math.floor(Math.random() * 14) + 6;
-                progress = Math.min(progress + increment, 100);
-
-                const downloadedMB = ((progress / 100) * totalSize).toFixed(1);
-                const randomSpeed = (Math.random() * 6.5 + 4.2).toFixed(1);
-
-                progressFill.style.width = `${progress}%`;
-                progressPercent.textContent = `${progress}%`;
-                progressSpeed.textContent = `Kecepatan: ${randomSpeed} MB/s`;
-                progressSize.textContent = `${downloadedMB} MB / ${totalSize} MB`;
-
-                if (progress >= 100) {
-                    clearInterval(interval);
-                    isDownloading = false;
-                    progressStatus.textContent = 'Unduhan Selesai! Menyimpan file...';
-                    progressSpeed.textContent = 'Selesai';
-                    progressSpinner.classList.remove('animate-spin');
-
-                    // Picu pengunduhan file tiket/ringkasan sampel nyata ke perangkat pengguna
-                    triggerSampleFileDownload(currentDrama, quality);
-
-                    // Tambahkan ke riwayat
-                    addToHistory(currentDrama, quality);
-
-                    showToast(`Berhasil mengunduh ${quality.label}!`, 'success');
-                    appendBotMessage(`✅ Unduhan selesai! File <strong>${currentDrama.title} [${quality.label}].${quality.format.toLowerCase()}</strong> telah disimpan.`);
-                }
-            }, 260);
-        }
-
-        // Membuat & mengunduh file placeholder/ringkasan metadata agar terasa nyata tanpa error
-        function triggerSampleFileDownload(drama, quality) {
-            const content = [
-                '====================================================',
-                '           MELOLOBOT DOWNLOADER - RINGKASAN FILE    ',
-                '====================================================',
-                `Judul Drama : ${drama.title}`,
-                `Kategori    : ${drama.category}`,
-                `Durasi      : ${drama.duration}`,
-                `Kualitas    : ${quality.label} (${quality.format})`,
-                `Ukuran Est. : ${quality.size}`,
-                `Sumber URL  : ${drama.url}`,
-                `Waktu Unduh : ${new Date().toLocaleString('id-ID')}`,
-                '====================================================',
-                'Catatan: Ini adalah file simulasi dari antarmuka MeloloBot Downloader.'
-            ].join('\n');
-
-            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-            const downloadUrl = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            const safeFilename = drama.title.replace(/[^a-z0-9]/gi, '_').toLowerCase();
-            a.href = downloadUrl;
-            a.download = `MeloloBot_${safeFilename}_${quality.format}.txt`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(downloadUrl);
-        }
-
-        // Fungsi Chat Bot Interaktif
-        function handleChatSubmit(e) {
-            e.preventDefault();
-            const chatInput = document.getElementById('chatInput');
-            const text = chatInput.value.trim();
-            if (!text) return;
-
-            chatInput.value = '';
-
-            // Jika input berupa URL, langsung proses sebagai link video
-            if (text.startsWith('http://') || text.startsWith('https://') || text.includes('melolo')) {
-                urlInput.value = text;
-                clearInputBtn.classList.remove('hidden');
-                processUrlRequest(text);
-                return;
-            }
-
-            appendUserMessage(text);
-            const typingId = appendBotTyping();
-
-            setTimeout(() => {
-                removeBotTyping(typingId);
-                const lower = text.toLowerCase();
-
-                if (lower.includes('bantuan') || lower.includes('help') || lower.includes('cara')) {
-                    appendBotMessage('Untuk mengunduh drama: <br>1. Salin link drama dari Melolo.<br>2. Tempel di kolom atas atau langsung di chat ini.<br>3. Pilih resolusi <strong>1080p, 720p, 480p</strong>, atau <strong>MP3</strong>.');
-                } else if (lower.includes('status') || lower.includes('server')) {
-                    appendBotMessage('🟢 <strong>Semua Server Normal!</strong><br>• Node Asia-Jakarta: Online (Ping 14ms)<br>• Ekstraktor Melolo API: Aktif v2.4');
-                } else if (lower.includes('format') || lower.includes('kualitas')) {
-                    appendBotMessage('Saya mendukung ekstraksi video <strong>MP4</strong> (1080p Full HD, 720p HD, 480p SD) serta ekstraksi audio <strong>MP3 (320kbps)</strong> lengkap dengan subtitle Indonesia.');
-                } else if (lower.includes('halo') || lower.includes('hai') || lower.includes('hi')) {
-                    appendBotMessage('Halo! Ada episode drama Melolo yang ingin kamu unduh hari ini? Kirimkan saja tautannya ke sini.');
-                } else {
-                    appendBotMessage('Saya mengerti! Jika Anda ingin mengunduh drama, silakan tempelkan tautan (URL) Melolo yang valid atau klik salah satu tombol <strong>Contoh Drama</strong> di atas.');
-                }
-            }, 650);
-        }
-
-        function sendQuickChat(commandText) {
-            document.getElementById('chatInput').value = commandText;
-            handleChatSubmit(new Event('submit'));
-        }
-
-        function appendUserMessage(text) {
-            const time = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
-            const html = `
-                <div class="flex items-start justify-end gap-2.5 animate-fade-in">
-                    <div class="bg-brand-600 text-white rounded-2xl rounded-tr-none px-3.5 py-2.5 max-w-[85%] text-xs sm:text-sm leading-relaxed shadow-sm break-all">
-                        <p>${escapeHtml(text)}</p>
-                        <span class="block text-[10px] text-brand-200 mt-1 text-right">${time}</span>
-                    </div>
                 </div>
-            `;
-            chatMessages.insertAdjacentHTML('beforeend', html);
-            scrollToBottomChat();
-        }
+            </form>
 
-        function appendBotMessage(htmlContent) {
-            const time = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
-            const html = `
-                <div class="flex items-start gap-2.5 animate-fade-in">
-                    <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-brand-600 to-indigo-600 flex items-center justify-center shrink-0 mt-0.5">
-                        <i data-lucide="bot" class="w-4 h-4 text-white"></i>
-                    </div>
-                    <div class="bg-dark-800 border border-gray-700/70 rounded-2xl rounded-tl-none px-3.5 py-2.5 max-w-[85%] text-xs sm:text-sm text-gray-200 leading-relaxed shadow-sm">
-                        <div>${htmlContent}</div>
-                        <span class="block text-[10px] text-gray-500 mt-1.5">${time}</span>
-                    </div>
-                </div>
-            `;
-            chatMessages.insertAdjacentHTML('beforeend', html);
-            lucide.createIcons();
-            scrollToBottomChat();
-        }
-
-        function appendBotTyping() {
-            const id = 'typing-' + Date.now();
-            const html = `
-                <div id="${id}" class="flex items-start gap-2.5 animate-fade-in">
-                    <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-brand-600 to-indigo-600 flex items-center justify-center shrink-0 mt-0.5">
-                        <i data-lucide="bot" class="w-4 h-4 text-white"></i>
-                    </div>
-                    <div class="bg-dark-800 border border-gray-700/70 rounded-2xl rounded-tl-none px-4 py-3 flex items-center gap-1.5">
-                        <span class="w-1.5 h-1.5 bg-brand-400 rounded-full typing-dot"></span>
-                        <span class="w-1.5 h-1.5 bg-brand-400 rounded-full typing-dot"></span>
-                        <span class="w-1.5 h-1.5 bg-brand-400 rounded-full typing-dot"></span>
-                    </div>
-                </div>
-            `;
-            chatMessages.insertAdjacentHTML('beforeend', html);
-            lucide.createIcons();
-            scrollToBottomChat();
-            return id;
-        }
-
-        function removeBotTyping(id) {
-            const el = document.getElementById(id);
-            if (el) el.remove();
-        }
-
-        function resetChat() {
-            chatMessages.innerHTML = '';
-            appendBotMessage('Riwayat percakapan telah dibersihkan. Silakan tempel link drama Melolo baru untuk diproses!');
-        }
-
-        function scrollToBottomChat() {
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        // Manajemen Riwayat Unduhan
-        function renderHistory() {
-            const container = document.getElementById('historyListContainer');
-            const badge = document.getElementById('historyBadge');
-            badge.textContent = downloadHistory.length;
-
-            if (downloadHistory.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-8 text-gray-500 text-xs sm:text-sm">
-                        Belum ada riwayat unduhan tersimpan.
-                    </div>
-                `;
-                return;
-            }
-
-            container.innerHTML = downloadHistory.map((item, idx) => `
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-xl bg-dark-900/70 border border-gray-800/90 hover:border-gray-700 transition-all">
-                    <div class="flex items-start sm:items-center gap-3">
-                        <div class="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-                            <i data-lucide="check-circle" class="w-4 h-4"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-xs sm:text-sm font-semibold text-gray-100">${escapeHtml(item.title)}</h4>
-                            <div class="flex flex-wrap items-center gap-2 text-[11px] text-gray-400 mt-0.5">
-                                <span class="text-brand-400 font-medium">${item.quality}</span>
-                                <span>•</span>
-                                <span>${item.size}</span>
-                                <span>•</span>
-                                <span>${item.time}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2 self-end sm:self-center">
-                        <span class="px-2.5 py-1 text-[11px] font-medium bg-emerald-500/10 text-emerald-400 rounded-lg">Tersimpan</span>
-                    </div>
-                </div>
-            `).join('');
-
-            lucide.createIcons();
-        }
-
-        function addToHistory(drama, quality) {
-            const now = new Date();
-            const timeStr = `Hari ini, ${now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })} WIB`;
-            downloadHistory.unshift({
-                title: drama.title,
-                quality: `${quality.label} (${quality.format})`,
-                size: quality.size,
-                time: timeStr
-            });
-            renderHistory();
-        }
-
-        function clearHistory() {
-            if (downloadHistory.length === 0) return;
-            downloadHistory = [];
-            renderHistory();
-            showToast('Riwayat unduhan telah dibersihkan.', 'info');
-        }
-
-        function scrollToHistory() {
-            document.getElementById('historySection').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Modal Helpers
-        function openModal(id) {
-            const modal = document.getElementById(id);
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closeModal(id) {
-            const modal = document.getElementById(id);
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-
-        // Sistem Notifikasi Toast Kustom (Pengganti alert)
-        function showToast(message, type = 'info') {
-            const container = document.getElementById('toastContainer');
-            const colors = {
-                info: 'bg-dark-800 border-brand-500/50 text-gray-100',
-                success: 'bg-dark-800 border-emerald-500/50 text-emerald-300',
-                warning: 'bg-dark-800 border-amber-500/50 text-amber-300',
-                error: 'bg-dark-800 border-rose-500/50 text-rose-300'
-            };
-            const icons = {
-                info: 'info',
-                success: 'check-circle-2',
-                warning: 'alert-triangle',
-                error: 'alert-circle'
-            };
-
-            const toast = document.createElement('div');
-            toast.className = `pointer-events-auto flex items-center gap-2.5 px-4 py-3 rounded-xl border shadow-2xl text-xs sm:text-sm animate-fade-in ${colors[type] || colors.info}`;
-            toast.innerHTML = `
-                <i data-lucide="${icons[type] || 'info'}" class="w-4 h-4 shrink-0"></i>
-                <span class="flex-1">${message}</span>
-            `;
-
-            container.appendChild(toast);
-            lucide.createIcons();
-
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.transform = 'translateY(10px)';
-                toast.style.transition = 'all 0.3s ease';
-                setTimeout(() => toast.remove(), 300);
-            }, 3200);
-        }
-
-        // Sanitasi HTML sederhana
-        function escapeHtml(str) {
-            const div = document.createElement('div');
-            div.textContent = str;
-            return div.innerHTML;
-        }
-
-        // Render riwayat awal saat halaman dimuat
-        window.addEventListener('DOMContentLoaded', () => {
-            renderHistory();
-        });
-    </script>
-</body>
-</html>
-```
+            <!-- Preset Drama Populer Realistis -->
+            <div class="max-w-4xl mx-auto mt-4 pt-4 border-t border-gray-800/80 flex flex-wrap items-center justify-center gap-2 text-xs">
+                <span class="text-gray-400 font-medium flex items-center gap-1">
+                    <i data-lucide="flame" class="w-3.5 h-3.5 text-amber-400"></i> Drama VIP Trending:
+                </span>
+                <button type="button" onclick="loadPresetDrama(0)" class="px-3 py-1.5 rounded-xl bg-dark-800/90 hover:bg-dark-700 border border-amber-500/25 text-gray-200 hover:text-amber-300 transition-all">
+                    👑 Pewaris Rahasia Konglomerat <span class="text-amber-400 font-semibold">(65 Ep)</span>
+                </button>
+                <button type="button" onclick="loadPresetDrama(1)" class="px-3 py-1.5 rounded-xl bg-dark-800/90 hover:bg-dark-700 border border-brand-500/25 text-gray-200 hover:text-brand-300 transition-all">
+                    ❄️ Takdir Cinta sang CEO Dingin <span class="text-brand-400 font-semibold">(80 Ep)</span>
+                </button>
+                <button type="button" onclick="loadPresetDrama(2)" class="px-3 py-1.5 rounded-xl bg-dark-800/90 hover:bg-dark
